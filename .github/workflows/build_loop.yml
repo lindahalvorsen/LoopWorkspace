@@ -236,6 +236,13 @@ jobs:
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
 
+          # Enable the selected Loop and LoopFollow features.
+          curl --fail --silent --show-error --location \
+            https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh \
+            --output "$RUNNER_TEMP/CustomizationSelect.sh"
+          /bin/bash "$RUNNER_TEMP/CustomizationSelect.sh" \
+            cgm_sensor_notes profiles remote_carb_edit meal_week now_line
+
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: |
